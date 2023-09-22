@@ -139,7 +139,7 @@ written the return type down to the right of the arrow in the signature. For our
 
 Once you've written a signature, purpose statement, and header, you should be able to run your code
 (by clicking the Run button in DrRacket) without producing any errors. This is a big milestone: your
-function may not do anything yet, but it does exist and you have clearly stated what it's
+function may not do anything yet, but it does @emph{exist} and you have clearly stated what it's
 @emph{supposed} to do. @bold{Please complete these steps at a minimum before asking for help!} It's
 incredibly difficult for other programmers to help you fix your code if they don't know what you're
 @emph{intending} your code to do. Finishing up to these steps will save a lot of time as other
@@ -148,7 +148,35 @@ programmers won't have to ask you dozens of questions to try and understand what
 
 @section[#:tag "examples"]{Examples}
 
-TODO.
+Putting together the previous sections, here's what we have so far:
+
+@(racketblock
+  (code:comment @#,elem{A temperature is a number. There are two kinds of temperatures:})
+  (code:comment @#,elem{degrees Fahrenheit and degrees Celsius.})
+  (code:line)
+  (code:comment @#,elem{Temperature -> Temperature})
+  (code:comment @#,elem{Converts a temperature in degrees Fahrenheit to degrees Celsius})
+  (define (fahrenheit-to-celsius fahrenheit)
+    0))
+
+We have clearly stated what our function is supposed to do. However, we have mearly written down
+descriptions and names. As in all cases of explanation, it is best to include @emph{examples}. To do
+so, write down a comment showing what the correct output of the function is for an example input (or
+inputs, if the function takes multiple inputs). For example, here's how we would explain that a
+temperature of 86 degrees Fahrenheit is equivalent to 30 degrees Celsius:
+
+@(racketblock
+  (code:comment @#,elem{A temperature is a number. There are two kinds of temperatures:})
+  (code:comment @#,elem{degrees Fahrenheit and degrees Celsius.})
+  (code:line)
+  (code:comment @#,elem{Temperature -> Temperature})
+  (code:comment @#,elem{Converts a temperature in degrees Fahrenheit to degrees Celsius})
+  (code:comment @#,elem{given: 86, expect: 30})
+  (define (fahrenheit-to-celsius fahrenheit)
+    0))
+
+Examples are extremely effective in helping others understand your code. A simple textual description
+of what a function does can be vague and ambiguous, but examples are explicit and precise.
 
 
 @section[#:tag "implementation-template"]{Implementation Template}
