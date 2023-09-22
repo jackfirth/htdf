@@ -175,8 +175,8 @@ input temperature of 86 degrees Fahrenheit should return an output temperature o
   (define (fahrenheit-to-celsius fahrenheit)
     0))
 
-Examples are extremely effective in helping others understand your code. Words describing a function
-what a function does can be vague and ambiguous, but examples are explicit and precise.
+Examples are extremely effective in helping others understand your code. Words describing what a
+function does can be vague and ambiguous, but examples are explicit and precise.
 
 
 @section[#:tag "implementation-template"]{Implementation Template}
