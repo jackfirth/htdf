@@ -6,10 +6,13 @@
 
 @title[#:tag "design-recipe" #:version #false]{The Function Design Recipe}
 
-This document is the Function Design Recipe from the textbook How to Design Programs. The design
-recipe is a list of steps to follow when creating a new function. Following this recipe will make it
-easier to solve programming problems and, crucially, easier to
-@emph{explain your solutions to other programmers} when asking them for help.
+@(define recipe-url "https://htdp.org/2023-8-14/Book/part_one.html#%28part._sec~3adesign-func%29")
+@(define htdp-url "https://htdp.org/")
+
+This document is the @hyperlink[recipe-url]{Function Design Recipe} from the textbook
+@hyperlink[htdp-url]{How to Design Programs}. The design recipe is a list of steps to follow when
+creating a new function. Following this recipe will make it easier to solve programming problems and,
+crucially, easier to @emph{explain your solutions to other programmers} when asking them for help.
 
 Whenever you're stuck on a programming problem and not sure what to do or why your code isn't working,
 @bold{try following this recipe before asking for help.} Some of the steps include writing down
