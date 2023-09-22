@@ -139,7 +139,7 @@ Once you've written a signature, purpose statement, and header, you should be ab
 function may not do anything useful yet, but it does @emph{exist} and you have clearly stated what
 it's @emph{supposed} to do. @bold{Please complete these steps at a minimum before asking for help!}
 It's incredibly difficult for other programmers to help you fix your code if they don't know what
-you're @emph{intending} your code to do. Finishing up to these steps will save a lot of time as other
+you're @emph{intending} your code to do. Finishing these steps will save a lot of time as other
 programmers won't have to ask you dozens of questions to try and understand what you're trying to do.
 
 
