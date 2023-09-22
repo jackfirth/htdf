@@ -1,7 +1,8 @@
 #lang scribble/manual
 
 
-@(require (for-label racket/base))
+@(require (for-label racket/base
+                     racket/list))
 
 
 @title[#:tag "design-recipe" #:version #false]{The Function Design Recipe}
@@ -181,7 +182,53 @@ function does can be vague and ambiguous, but examples are explicit and precise.
 
 @section[#:tag "implementation-template"]{Implementation Template}
 
-TODO.
+@(define owl-url "https://i.kym-cdn.com/photos/images/original/000/572/078/d6d.jpg")
+
+In this step, we --- finally --- shift our attention to the @emph{body} of the function. However,
+going from the trivial function body we wrote in the header step to a fully working implementation is
+a bit of an @hyperlink[owl-url]{owl-drawing exercise}. To break this process down, first we will write
+a @emph{template}.
+
+A template is a partial snippet of code following some common pattern based on the @bold{types} of the
+inputs to a function and its output. In the case of our @racket[fahrenheit-to-celsius] function, we
+know three things about our input and output:
+
+@itemlist[
+ @item{We have one input, named @racket[fahrenheit], and it's a number representing a temperature.}
+ @item{We need to produce a number representing a temperature in Celsius as output.}
+ @item{We have to @emph{compute} the output from the input, likely using a little math.}]
+
+From this, we might write the following function body using a template for calling some sort of math
+function on @racket[fahrenheit]:
+
+@(racketblock
+  (define (fahrenheit-to-celsius fahrenheit)
+    (... + ... * ... fahreneit ...)))
+
+When writing templates, use @racket[...] to fill in for code we aren't sure about yet. So far we know
+we probably need to use the @racket[+] or @racket[*] functions to do some math, and we need to pass
+@racket[fahrenheit] as input to those functions. The rest is up in the air, but now we have a starting
+point.
+
+Templates tend to be more useful the more complex the input data is. For example, a common template
+when writing functions that process @emph{lists} is to use @racket[cond] and @racket[empty?] to check
+if the list is empty, and do something with the first element of the list and the rest of the list if
+it's not. If we were trying to write a function that doubles every number in a list, using that
+template for lists might give us a definition like the following:
+
+@(racketblock
+  (code:comment @#,elem{A list of numbers, spelled ListOfNumbers, is a collection of some quantity})
+  (code:comment @#,elem{of numbers. A list may be empty. If a list is not empty, it has a first})
+  (code:comment @#,elem{number and a smaller list containing the rest of the numbers.})
+  (code:line)
+  (code:comment @#,elem{ListOfNumbers -> ListOfNumbers})
+  (code:comment @#,elem{Doubles every number in a list})
+  (code:comment @#,elem{given: (list 1 2 3), expect: (list 2 4 6)})
+  (define (double-each-number numbers)
+    (cond
+      [(empty? numbers) ...]
+      [else
+       (... (first numbers) ... (rest numbers) ...)])))
 
 
 @section[#:tag "implementation"]{Implementation}
