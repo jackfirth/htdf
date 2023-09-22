@@ -86,9 +86,9 @@ signature:
 @(racketblock
   (code:comment @#,elem{Temperature -> Temperature}))
 
-That signature indicates that the function takes a single temperature as an input and returns a single
-temperature as an output. And from the data definition we defined earlier, we know that a temperature
-is just a number. So the function takes a number and returns a number.
+That signature indicates that the function takes a @bold{single temperature as an input} and returns a
+@bold{single temperature as an output}. And from the data definition we defined earlier, we know that
+@bold{a temperature is just a number}. So the function takes a number and returns a number.
 
 As another example, a function that takes three points describing a triangle and returns the area of
 that triangle might have a signature like this:
