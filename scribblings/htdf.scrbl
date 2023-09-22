@@ -158,9 +158,10 @@ Putting together the previous sections, here's what we have so far:
 
 We have clearly stated what our function is supposed to do. However, we have mearly written down
 descriptions and names. As in all cases of explanation, it is best to include @emph{examples}. To do
-so, write down a comment showing what the correct output of the function is for an example input (or
-inputs, if the function has multiple parameters). For example, here's how we would explain that an
-input temperature of 86 degrees Fahrenheit should return an output temperature of 30 degrees Celsius:
+so, @bold{write down a comment} showing what the @bold{correct output} of the function is for an
+@bold{example input} (or inputs, if the function has multiple parameters). For example, here's how we
+would explain that an input temperature of 86 degrees Fahrenheit should return an output temperature
+of 30 degrees Celsius:
 
 @(racketblock
   (code:comment @#,elem{A temperature is a number. There are two kinds of temperatures:})
