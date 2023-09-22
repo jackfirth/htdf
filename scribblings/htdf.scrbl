@@ -129,8 +129,9 @@ inputs @emph{in code}, as contrasted with the signature and purpose statement wh
 function @emph{in text}. The header is written with @racket[define], followed by the function's name
 and the names of its inputs, then finally a trivial value such as @racket[0], @racket[#false], or the
 empty list is used. Choose the trivial value that matches the type of output your function is meant to
-return. Refer to your function's signature if you've forgotten what that type is: you should have
-written the return type down to the right of the arrow in the signature.
+return. Refer to your function's signature if you've forgotten what that type is; you should have
+written the return type down to the right of the arrow in the signature. For our
+@racket[fahrenheit-to-celsius] function, the following is a suitable header:
 
 @(racketblock
   (define (fahrenheit-to-celsius fahrenheit)
