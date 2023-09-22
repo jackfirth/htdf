@@ -186,9 +186,9 @@ going from the trivial function body we wrote in the header step to a fully work
 a bit of an @hyperlink[owl-url]{owl-drawing exercise}. To break this process down, first we will write
 a @emph{template}.
 
-A template is a partial snippet of code following some common pattern based on the @bold{types} of the
-inputs to a function and its output. In the case of our @racket[fahrenheit-to-celsius] function, we
-know three things about our input and output:
+A template is a @bold{partial snippet of code} following some @bold{common pattern} based on the
+@bold{types} of the inputs to a function and its output. In the case of our
+@racket[fahrenheit-to-celsius] function, we know three things about our input and output:
 
 @itemlist[
  @item{We have one input, named @racket[fahrenheit], and it's a number representing a temperature.}
