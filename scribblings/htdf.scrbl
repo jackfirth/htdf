@@ -137,6 +137,14 @@ written the return type down to the right of the arrow in the signature. For our
   (define (fahrenheit-to-celsius fahrenheit)
     0))
 
+Once you've written a signature, purpose statement, and header, you should be able to run your code
+(by clicking the Run button in DrRacket) without producing any errors. This is a big milestone: your
+function may not do anything yet, but it does exist and you have clearly stated what it's
+@emph{supposed} to do. @bold{Please complete these steps at a minimum before asking for help!} It's
+incredibly difficult for other programmers to help you fix your code if they don't know what you're
+@emph{intending} your code to do. Finishing up to these steps will save a lot of time as other
+programmers won't have to ask you dozens of questions to try and understand what you're trying to do.
+
 
 @section[#:tag "examples"]{Examples}
 
