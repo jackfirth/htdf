@@ -118,10 +118,6 @@ answers to "how does it work?" A purpose statement answers "what does it do?" If
 to write for a purpose statement, ask yourself "what does the function compute?" Then write down the
 shortest possible answer to that question.
 
-@(racketblock
-  (code:comment @#,elem{Converts a temperature in degrees Fahrenheit to degrees Celsius}))
-
-
 @subsection[#:tag "header"]{Header}
 
 The @bold{header} is a simple definition of the function with an unfinished implementation that does
