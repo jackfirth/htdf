@@ -125,12 +125,12 @@ shortest possible answer to that question.
 
 The @bold{header} is a simple definition of the function with an unfinished implementation that does
 as little as possible. The goal of the header is to define the function's name and the name of its
-inputs @emph{in code}, as contrasted with the signature and purpose statement which define the
+parameters @emph{in code}, as contrasted with the signature and purpose statement which define the
 function @emph{in text}. The header is written with @racket[define], followed by the function's name
-and the names of its inputs, then finally a trivial value such as @racket[0], @racket[#false], or the
-empty list is used. Choose the trivial value that matches the type of output your function is meant to
-return. Refer to your function's signature if you've forgotten what that type is; you should have
-written the return type down to the right of the arrow in the signature. For our
+and the names of its parameters, then finally a trivial value such as @racket[0], @racket[#false], or
+the empty list is used. Choose the trivial value that matches the type of output your function is
+meant to return. Refer to your function's signature if you've forgotten what that type is; you should
+have written the return type down to the right of the arrow in the signature. For our
 @racket[fahrenheit-to-celsius] function, the following is a suitable header:
 
 @(racketblock
@@ -139,10 +139,10 @@ written the return type down to the right of the arrow in the signature. For our
 
 Once you've written a signature, purpose statement, and header, you should be able to run your code
 (by clicking the Run button in DrRacket) without producing any errors. This is a big milestone: your
-function may not do anything yet, but it does @emph{exist} and you have clearly stated what it's
-@emph{supposed} to do. @bold{Please complete these steps at a minimum before asking for help!} It's
-incredibly difficult for other programmers to help you fix your code if they don't know what you're
-@emph{intending} your code to do. Finishing up to these steps will save a lot of time as other
+function may not do anything useful yet, but it does @emph{exist} and you have clearly stated what
+it's @emph{supposed} to do. @bold{Please complete these steps at a minimum before asking for help!}
+It's incredibly difficult for other programmers to help you fix your code if they don't know what
+you're @emph{intending} your code to do. Finishing up to these steps will save a lot of time as other
 programmers won't have to ask you dozens of questions to try and understand what you're trying to do.
 
 
@@ -162,8 +162,8 @@ Putting together the previous sections, here's what we have so far:
 We have clearly stated what our function is supposed to do. However, we have mearly written down
 descriptions and names. As in all cases of explanation, it is best to include @emph{examples}. To do
 so, write down a comment showing what the correct output of the function is for an example input (or
-inputs, if the function takes multiple inputs). For example, here's how we would explain that a
-temperature of 86 degrees Fahrenheit is equivalent to 30 degrees Celsius:
+inputs, if the function has multiple parameters). For example, here's how we would explain that an
+input temperature of 86 degrees Fahrenheit should return an output temperature of 30 degrees Celsius:
 
 @(racketblock
   (code:comment @#,elem{A temperature is a number. There are two kinds of temperatures:})
@@ -175,8 +175,8 @@ temperature of 86 degrees Fahrenheit is equivalent to 30 degrees Celsius:
   (define (fahrenheit-to-celsius fahrenheit)
     0))
 
-Examples are extremely effective in helping others understand your code. A simple textual description
-of what a function does can be vague and ambiguous, but examples are explicit and precise.
+Examples are extremely effective in helping others understand your code. Words describing a function
+what a function does can be vague and ambiguous, but examples are explicit and precise.
 
 
 @section[#:tag "implementation-template"]{Implementation Template}
