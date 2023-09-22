@@ -123,7 +123,14 @@ shortest possible answer to that question.
 
 @subsection[#:tag "header"]{Header}
 
-TODO.
+The @bold{header} is a simple definition of the function with an unfinished implementation that does
+as little as possible. The goal of the header is to define the function's name and the name of its
+inputs @emph{in code}, as contrasted with the signature and purpose statement which define the
+function @emph{in text}. The header is written with @racket[define], followed by the function's name
+and the names of its inputs, then finally a trivial value such as @racket[0], @racket[#false], or the
+empty list is used. Choose the trivial value that matches the type of output your function is meant to
+return. Refer to your function's signature if you've forgotten what that type is: you should have
+written the return type down to the right of the arrow in the signature.
 
 @(racketblock
   (define (fahrenheit-to-celsius fahrenheit)
