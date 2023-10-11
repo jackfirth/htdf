@@ -2,7 +2,9 @@
 
 
 @(require (for-label racket/base
-                     racket/list))
+                     racket/list
+                     rackunit)
+          scribble/example)
 
 
 @title[#:tag "design-recipe" #:version #false]{The Function Design Recipe}
@@ -39,14 +41,14 @@ down in code. For simple data definitions, a comment or two can suffice:
   (code:comment @#,elem{A temperature is a number. There are two kinds of temperatures:})
   (code:comment @#,elem{degrees Fahrenheit and degrees Celsius.}))
 
-For more complex data definitions, you might create a @racket[struct] (or several structs) to group
-data together into logical units. In these cases, use comments to explain what the struct is and what
-its components mean. For example, a function for solving a geometry problem may need a data definition
-like this:
+For more complex data definitions, you might create a struct (or several structs) using
+@racket[define-struct] to group data together into logical units. In these cases, use comments to
+explain what the struct is and what its components mean. For example, a function for solving a
+geometry problem may need a data definition like this:
 
 @(racketblock
   (code:comment @#,elem{A point is a pair of two numbers: an x-coordinate and a y-coordinate.})
-  (struct point (x y) #:transparent))
+  (define-struct point (x y) #:transparent))
 
 Always make your structs transparent when they're used to group together data in this fashion. The
 ability to make non-transparent structs (called @emph{opaque} structs) is meant for hiding the
@@ -193,17 +195,18 @@ A template is a @bold{partial snippet of code} following some @bold{common patte
 @itemlist[
  @item{We have one input, named @racket[fahrenheit], and it's a number representing a temperature.}
  @item{We need to produce a number representing a temperature in Celsius as output.}
- @item{We have to @emph{compute} the output from the input, likely using a little math.}]
+ @item{We have to @emph{compute} the output from the input. The formula converting fahrenheit to
+  celsius involves subtraction and multiplication, so we'll need to use those.}]
 
-From this, we might write the following function body using a template for calling some sort of math
-function on @racket[fahrenheit]:
+From this, we might write the following function body using a template for calling the needed math
+functions on @racket[fahrenheit]:
 
 @(racketblock
   (define (fahrenheit-to-celsius fahrenheit)
-    (... + ... * ... fahreneit ...)))
+    (... - ... * ... fahreneit ...)))
 
 When writing templates, use @racket[...] to fill in for code we aren't sure about yet. So far we know
-we probably need to use the @racket[+] or @racket[*] functions to do some math, and we need to pass
+we probably need to use the @racket[-] or @racket[*] functions to do some math, and we need to pass
 @racket[fahrenheit] as input to those functions. The rest is up in the air, but now we have a starting
 point.
 
@@ -230,9 +233,87 @@ template for lists might give us a definition like the following:
 
 @section[#:tag "implementation"]{Implementation}
 
-TODO.
+In this step, we fill in the rest of the function's implementation. The template from the previous
+step should use ellipses (the @racket[...] symbol) to identify what pieces need to be filled in. Go
+through the template's ellipses one at a time and decide what code to fill in. For our
+@racket[fahrenheit-to-celsius] function, we had the following implementation template:
+
+@(racketblock
+  (... - ... * ... fahreneit ...))
+
+The formula for converting a fahrenheit temperature F to celsius is (F - 32) * 5/9. Notice the
+subtraction is nested inside parentheses: that means that it should also be nested in our template.
+The outermost operation is multiplication, so it should go in the outermost layer of our function
+body.
+
+@(racketblock
+  (* (- fahrenheit ...) ...))
+
+Now we fill in the constant @racket[32] for the subtraction.
+
+@(racketblock
+  (* (- fahrenheit 32) ...))
+
+And fill in @racket[5/9] for the multiplication.
+
+@(racketblock
+  (* (- fahrenheit 32) 5/9))
+
+We have now implemented our function! The result of our work looks like this:
+
+@(racketblock
+  (code:comment @#,elem{A temperature is a number. There are two kinds of temperatures:})
+  (code:comment @#,elem{degrees Fahrenheit and degrees Celsius.})
+  (code:line)
+  (code:comment @#,elem{Temperature -> Temperature})
+  (code:comment @#,elem{Converts a temperature in degrees Fahrenheit to degrees Celsius})
+  (code:comment @#,elem{given: 86, expect: 30})
+  (define (fahrenheit-to-celsius fahrenheit)
+    (* (- fahrenheit 32) 5/9)))
+
+We're not done yet however. We may have implemented our function, but now we must @emph{test} it.
 
 
 @section[#:tag "testing"]{Testing}
 
-TODO.
+
+The final step in the function design recipe is testing the function to be sure it works. There are
+two approaches to testing functions: @emph{manual} testing and @emph{automated} testing. Manual
+testing is simpler, but requires more work and is more prone to errors.
+
+To manually test your function, click the Run button in DrRacket. Then, in the Interactions Window,
+call your function with the examples you wrote down in the Examples step of the design recipe. Here's
+an example of how manually testing @racket[fahrenheit-to-celsius] would look:
+
+@(examples
+  (eval:alts (fahrenheit-to-celsius 86) (eval:result (racketresultfont 30))))
+
+An automated test of your function is similar to a manual test, except instead of manually calling
+your function in the Interactions Window each time you want to test your function, you write a
+@emph{test case} that will automatically test your function each time you press Run. This is called
+@emph{unit testing}, and each test case is called a @emph{unit test}. There are many different ways to
+write unit tests. The most common way in Racket code is using the @racketmodname[rackunit] test
+framework. To use RackUnit, write a @emph{test submodule} below your function like so:
+
+@(racketblock
+  (define (fahrenheit-to-celsius fahrenheit)
+    (* (- fahrenheit 32) 5/9))
+
+  (module+ test
+    (require rackunit)
+    ...))
+
+The test submodule is where we'll place our tests. We'll use @racket[check-equal?] to test that
+calling our function with 86 produces the expected result of 32:
+
+@(racketblock
+  (define (fahrenheit-to-celsius fahrenheit)
+    (* (- fahrenheit 32) 5/9))
+
+  (module+ test
+    (require rackunit)
+    (check-equal? (fahrenheit-to-celsius 86) 32)))
+
+Now, whenever you press Run in DrRacket, your test will run automatically. This is very useful when
+trying to change old code or when working together with other programmers on code, as it ensures you
+don't accidentally break something without realizing it.
