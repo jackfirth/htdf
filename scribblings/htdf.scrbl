@@ -286,7 +286,7 @@ call your function with the examples you wrote down in the Examples step of the 
 an example of how manually testing @racket[fahrenheit-to-celsius] would look:
 
 @(examples
-  (eval:alts (fahrenheit-to-celsius 86) (eval:result (racketresultfont 30))))
+  (eval:alts (fahrenheit-to-celsius 86) (eval:result @racketresultfont{30})))
 
 An automated test of your function is similar to a manual test, except instead of manually calling
 your function in the Interactions Window each time you want to test your function, you write a
